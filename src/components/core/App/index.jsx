@@ -1,22 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+
+import * as React from 'react';
 import { connect } from 'react-redux';
 
+type Props = {
+  children?: React.Node
+};
+type State = {
+};
 
-class App extends React.Component {
+class App extends React.Component<Props, State> {
   constructor(props, context) {
     super(props, context);
   }
 
+
   render() {
     const {
-
+      children
     } = this.props;
-    console.log('here');
 
     return (
       <div>
-        test
+        {children}
       </div>
     );
   }

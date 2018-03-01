@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import configureStore from './store/configureStore';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { App, FormContainer }  from "components";
 
@@ -13,31 +13,20 @@ const history = createHistory();
 const store = configureStore(history);
 
 
-console.log(App);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <App>
-        <Route exact path="/" component={FormContainer}/>
+        <Switch>
+          <Route exact path="/" component={ListDisplay}/>
+          <Route exact path="/item/:itemId" component={ItemDisplay}/>
+        </Switch>
       </App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('app')
 );
 
-/*
-const rootEl = document.getElementById('app');
-const render = Component =>
-  ReactDOM.render(
-    <AppContainer>
-      <Provider store={store}>
-        <Component />
-      </Provider>
-    </AppContainer>,
-    rootEl
-  );
-render(App);
-*/
 /*
 render(
   <Provider store={store}>

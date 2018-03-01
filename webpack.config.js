@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const webpack = require("webpack");
 module.exports = {
   resolve: {
@@ -84,6 +85,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
+    }),
+    new FlowBabelWebpackPlugin()
   ]
 };
