@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { ItemListContainer } from 'components';
 
 type Props = {
 };
@@ -15,6 +16,7 @@ class ListDisplay extends React.Component<Props> {
 
     return (
       <div>
+        <ItemListContainer />
       </div>
     );
   }

@@ -6,7 +6,7 @@ import createHistory from 'history/createBrowserHistory';
 import configureStore from './store/configureStore';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import { App, FormContainer }  from "components";
+import { App, ListDisplay, ItemDisplay }  from "components";
 
 //let initialState = {};
 const history = createHistory();

@@ -1,2 +1,2 @@
-//GLOBAL 
-export const TEST = "TEST";
+//ITEM 
+export const SELECT_ITEM = "SELECT_ITEM";

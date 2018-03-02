@@ -5,7 +5,7 @@ type Props = {
 };
 
 
-class ItemListContainer extends React.Component<Props> {
+class AddItemForm extends React.Component<Props> {
 
   constructor(props: Props) {
     super(props);
@@ -20,4 +20,4 @@ class ItemListContainer extends React.Component<Props> {
   }
 }
 
-export default ItemListContainer;
+export default AddItemForm;

@@ -1,12 +1,12 @@
-import { TEST } from '../../constants/actionTypes';
+import { SELECT_ITEM } from '../../constants/actionTypes';
 
 import initialState from './initState';
 
 export default function listItemReducer(state = initialState, action) {
   switch(action.type) {
-    case TEST:
+    case SELECT_ITEM:
       return _.assign({}, state, {
-        loader: true
+        curentItem: action.data
       });
     default:
       return state;

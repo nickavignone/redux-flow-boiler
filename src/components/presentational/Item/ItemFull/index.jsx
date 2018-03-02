@@ -2,6 +2,9 @@
 import * as React from 'react';
 
 type Props = {
+  title: string,
+  desc: string,
+  id: number
 };
 
 
@@ -12,9 +15,17 @@ class ItemFull extends React.Component<Props> {
   }
 
   render() {
+    const {
+      title,
+      desc,
+      id
+    } = this.props;
 
     return (
       <div>
+        <div>{title}</div>
+        <div>{desc}</div>
+        <div>{id}</div>
       </div>
     );
   }

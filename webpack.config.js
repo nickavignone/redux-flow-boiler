@@ -86,6 +86,10 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     }),
-    new FlowBabelWebpackPlugin()
+    new FlowBabelWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      'Promise': 'es6-promise',
+      '_': 'lodash'
+    })
   ]
 };
