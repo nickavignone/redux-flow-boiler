@@ -33,7 +33,7 @@ class ItemContainer extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div>d ff
+      <div>
       {loader}
         <ItemFull
           title={currentItem.title}
