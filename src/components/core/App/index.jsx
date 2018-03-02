@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 type Props = {
   children?: React.Node
@@ -44,7 +45,7 @@ function mapDispatchToProps() {
   };
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App));

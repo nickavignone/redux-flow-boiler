@@ -2,10 +2,11 @@
 import * as React from 'react';
 
 type Props = {
+
 };
 
 
-class AddItemForm extends React.Component<Props> {
+class Loader extends React.Component<Props> {
 
   constructor(props: Props) {
     super(props);
@@ -15,10 +16,10 @@ class AddItemForm extends React.Component<Props> {
 
     return (
       <div>
-      sdf
+        asdf
       </div>
     );
   }
 }
 
-export default AddItemForm;
+export default Loader;

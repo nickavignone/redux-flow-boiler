@@ -1,4 +1,5 @@
 export default {
+  loader: 5,
   currentItem: {},
   items: [
     {

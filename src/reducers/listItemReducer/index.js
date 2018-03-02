@@ -6,7 +6,7 @@ export default function listItemReducer(state = initialState, action) {
   switch(action.type) {
     case SELECT_ITEM:
       return _.assign({}, state, {
-        curentItem: action.data
+        currentItem: action.data
       });
     default:
       return state;

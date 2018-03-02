@@ -23,6 +23,7 @@ class ItemFull extends React.Component<Props> {
 
     return (
       <div>
+        <hr />
         <div>{title}</div>
         <div>{desc}</div>
         <div>{id}</div>

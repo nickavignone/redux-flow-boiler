@@ -16,8 +16,8 @@ class ItemDisplay extends React.Component<Props> {
 
     return (
       <div>
-        <ItemContainer />
         <ItemListContainer />
+        <ItemContainer />
       </div>
     );
   }

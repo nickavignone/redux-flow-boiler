@@ -1,30 +1,39 @@
-import { SELECT_ITEM } from '../constants/actionTypes';
+// @flow
+import { SELECT_ITEM, REMOVE_ITEM } from '../constants/actionTypes';
 import { push } from 'react-router-redux';
 import { demoData } from '../constants/demoData';
-
-console.log(demoData);
-console.log(SELECT_ITEM);
+import { storage } from '../helpers/storage';
 
 const later = (delay, value) =>
-    new Promise(resolve => setTimeout(resolve, delay, demoData));
+    new Promise(resolve => setTimeout(resolve, delay, demoData[value]));
 
-export const selectItem = (id) => {
-  return (dispatch) => {
-    later(1000, 100)
-      .then(response => {
-        dispatch({
-          type: SELECT_ITEM,
-          data: response[id]
+export const selectItem = (id:number, timeTravel:bool) => {
+  return (dispatch:Function) => {
+    const path = '/item/' + id;
+    const data = storage.getItem(path);
+    if(data && timeTravel) {
+      dispatch({
+        type: SELECT_ITEM,
+        data: JSON.parse(data)
+      });
+    } else {
+      later(1000, id)
+        .then(response => {
+          dispatch({
+            type: SELECT_ITEM,
+            data: response
+          });
+          storage.setItem(path, JSON.stringify(response));
+          dispatch(push(path));
         });
-        const path = '/item/' + id;
-        dispatch(push(path));
-      })
+    }
   };
 };
 
+
 export const removeItem = () => {
   return {
-    type: CHANGE_SECTION,
-    data: {sections : getFlowObj({}, 2)}
+    type: REMOVE_ITEM,
+    data: {}
   };
 };
