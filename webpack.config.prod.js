@@ -16,17 +16,13 @@ const GLOBALS = {
 
 const config = {
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
-    modulesDirectories: ['src', 'node_modules'],
+    extensions: ['.js', '.jsx', '.json'],
     modules: ['src', 'node_modules']
   },
-  debug: true,
-  devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
-  noInfo: true, // set to false to see a list of every file being bundled.
   entry: path.resolve(__dirname, 'src/index'),
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
-    path: path.resolve(__dirname, '../dist/test'),
+    path: path.resolve(__dirname, './dist/js'),
     publicPath: '/',
     filename: '[name].js'
   },
@@ -82,10 +78,20 @@ const config = {
       },
       {
         test: /(\.css|\.scss)$/,
-        loader: ExtractTextPlugin.extract('css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'),
-        options: {
-          plugins: () => [autoprefixer()]
-        }
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'style-loader',
+            'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [autoprefixer()]
+              }
+            },
+            'sass-loader'
+          ]
+        })
       }
     ]
   }
