@@ -1,16 +1,25 @@
 {
   "presets": [
+    "env",
     ["es2015", {"modules": false}],
     "stage-2",
     "react"
   ],
   "env": {
     "development": {
-      "plugins": ["flow-react-proptypes"]
+      "plugins": [
+        "flow-react-proptypes",
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     }
   },
   "plugins": [
-    "react-hot-loader/babel",
     "transform-flow-comments"
   ]
 }

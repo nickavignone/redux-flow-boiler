@@ -1,7 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { App, ListDisplay, ItemDisplay }  from "components";
+
 
 const routes = () => {
   return (
@@ -9,6 +9,7 @@ const routes = () => {
       <Switch>
         <Route exact path="/" component={ListDisplay}/>
         <Route path="/item/:itemId" component={ItemDisplay}/>
+        <Redirect to="/" />
       </Switch>
     </App>
   );

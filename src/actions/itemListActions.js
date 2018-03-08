@@ -1,5 +1,5 @@
 // @flow
-import { SELECT_ITEM, REMOVE_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
+import { SELECT_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
 import { push } from 'react-router-redux';
 import { demoData } from '../constants/demoData';
 import { storage } from '../helpers/storage';
@@ -11,8 +11,7 @@ export const selectItem = (id:number, timeTravel:bool) => {
   return (dispatch:Function) => {
     const path = '/item/' + id;
     const data = storage.getItem(path);
-
-    if(data) {
+    if(data && data != 'undefined') {
       dispatch({
         type: SELECT_ITEM,
         data: JSON.parse(data)
@@ -24,22 +23,24 @@ export const selectItem = (id:number, timeTravel:bool) => {
       dispatch({type: SET_LOADER});
       later(1000, id) // fake ajax request
         .then(response => {
-          dispatch({
-            type: SELECT_ITEM,
-            data: response
-          });
-          storage.setItem(path, JSON.stringify(response));
-          dispatch(push(path));
+          if(response) {
+            dispatch({
+              type: SELECT_ITEM,
+              data: response
+            });
+            storage.setItem(path, JSON.stringify(response));
+            dispatch(push(path));
+            dispatch({type: END_LOADER});
+          } else {
+            throw 'no data';
+          }
+        })
+        .catch(() => {
+          dispatch(push('/'));
           dispatch({type: END_LOADER});
         });
     }
   };
 };
 
-
-export const removeItem = () => {
-  return {
-    type: REMOVE_ITEM,
-    data: {}
-  };
-};
+export { selectItem  as default };
