@@ -1,5 +1,5 @@
 // @flow
-import { SELECT_ITEM, REMOVE_ITEM } from '../constants/actionTypes';
+import { SELECT_ITEM, REMOVE_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
 import { push } from 'react-router-redux';
 import { demoData } from '../constants/demoData';
 import { storage } from '../helpers/storage';
@@ -11,13 +11,18 @@ export const selectItem = (id:number, timeTravel:bool) => {
   return (dispatch:Function) => {
     const path = '/item/' + id;
     const data = storage.getItem(path);
-    if(data && timeTravel) {
+
+    if(data) {
       dispatch({
         type: SELECT_ITEM,
         data: JSON.parse(data)
       });
+      if(!timeTravel) {
+        dispatch(push(path));
+      }
     } else {
-      later(1000, id)
+      dispatch({type: SET_LOADER});
+      later(1000, id) // fake ajax request
         .then(response => {
           dispatch({
             type: SELECT_ITEM,
@@ -25,6 +30,7 @@ export const selectItem = (id:number, timeTravel:bool) => {
           });
           storage.setItem(path, JSON.stringify(response));
           dispatch(push(path));
+          dispatch({type: END_LOADER});
         });
     }
   };

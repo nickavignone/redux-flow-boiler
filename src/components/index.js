@@ -1,3 +1,5 @@
+//credit to https://github.com/diegohaz/arc
+
 const req = require.context('.', true, /^.+\/([^/]+)\/index\.jsx?$/);
 
 req.keys().forEach((key) => {

@@ -3,9 +3,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { Loader } from 'components';
 
 type Props = {
-  children?: React.Node
+  children?: React.Node,
+  loader: Boolean
 };
 type State = {
 };
@@ -18,24 +20,28 @@ class App extends React.Component<Props, State> {
 
   render() {
     const {
-      children
+      children,
+      loader
     } = this.props;
 
     return (
       <div>
-        {children}
+        {loader ? (
+          <Loader />
+        ) : (
+          <div>
+            {children}
+          </div>
+        )}
       </div>
     );
   }
 }
 
 
-function mapStateToProps() {
+function mapStateToProps(state) {
   return {
-    /*loader: state.globalReducer.loader,
-    qualtrics: state.globalReducer.qualtrics,
-    genericError: state.globalReducer.genericError,
-    genericErrorMsg: state.globalReducer.genericErrorMsg*/
+    loader: state.globalReducer.loader
   };
 }
 

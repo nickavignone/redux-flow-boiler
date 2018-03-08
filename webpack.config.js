@@ -2,6 +2,8 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const webpack = require("webpack");
+const autoprefixer = require ('autoprefixer');
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -36,7 +38,7 @@ module.exports = {
       reasons: false,
       children: false,
       source: false,
-      errors: false,
+      errors: true,
       errorDetails: true,
       warnings: true,
       publicPath: false
@@ -68,6 +70,19 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /(\.css|\.scss)$/,
+        loaders: [
+          'style-loader',
+          'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [autoprefixer()]
+            }
+          },
+          'sass-loader']
       }
     ]
   },

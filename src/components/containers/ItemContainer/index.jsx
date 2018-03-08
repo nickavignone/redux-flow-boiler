@@ -9,8 +9,7 @@ import { selectItem } from '../../../actions/itemListActions';
 type Props = {
   currentItem: {title: string, desc: string, id: number},
   match: {params: { itemId:number }},
-  actions: { selectItem: Function },
-  loader:bool
+  actions: { selectItem: Function }
 };
 
 
@@ -28,13 +27,11 @@ class ItemContainer extends React.Component<Props> {
 
   render() {
     const {
-      currentItem,
-      loader
+      currentItem
     } = this.props;
 
     return (
       <div>
-      {loader}
         <ItemFull
           title={currentItem.title}
           desc={currentItem.desc}
@@ -48,8 +45,7 @@ class ItemContainer extends React.Component<Props> {
 function mapStateToProps(state, ownProps) {
   return {
     currentItem: state.listItemReducer.currentItem,
-    itemId: ownProps.match.params.itemId,
-    loader: state.listItemReducer.loader
+    itemId: ownProps.match.params.itemId
   };
 }
 

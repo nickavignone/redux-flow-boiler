@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import styles from './main.scss';
 
 type Props = {
   title: string,
@@ -22,8 +23,8 @@ class ItemPreview extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div onClick={() => clickHandler(id)}>
-        {title}
+      <div>
+        <span className={styles.item} onClick={() => clickHandler(id)}>{title}</span>
       </div>
     );
   }
