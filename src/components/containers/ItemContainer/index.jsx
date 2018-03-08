@@ -38,13 +38,13 @@ class ItemContainer extends React.Component<Props> {
     } = this.props;
     return (
       <div>
-        {!_.isEmpty(currentItem) && (
+        {!_.isEmpty(currentItem) ? (
           <ItemFull
             title={currentItem.title}
             desc={currentItem.desc}
             id={currentItem.id}
           />
-        )}
+        ) : null}
       </div>
     );
   }

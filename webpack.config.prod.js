@@ -1,13 +1,9 @@
-// For info about this file refer to webpack and webpack-hot-middleware documentation
-// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-//import HtmlWebpackPlugin from 'html-webpack-plugin';
-const autoprefixer = require('autoprefixer');
+
 const path = require('path');
-//Global Samsung Mixins/Vars
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -81,12 +77,13 @@ const config = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'style-loader',
             'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [autoprefixer()]
+                config: {
+                   path: path.resolve(__dirname, './postcss.config.js'),
+                }
               }
             },
             'sass-loader'
