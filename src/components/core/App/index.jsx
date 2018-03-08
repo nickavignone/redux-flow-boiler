@@ -7,7 +7,7 @@ import { Loader } from 'components';
 
 type Props = {
   children?: React.Node,
-  loader: Boolean
+  loader: boolean
 };
 type State = {
 };
