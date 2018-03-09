@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { App, ListDisplay, ItemDisplay }  from "components";
-
+import { ListDisplay, ItemDisplay }  from "components";
+import App from './core/App';
 
 const routes = () => {
   return (

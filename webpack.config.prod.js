@@ -29,11 +29,6 @@ const config = {
       '_': 'lodash'
     }),
 
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
-      __DEV__: false
-    }),
-
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
 
@@ -46,9 +41,6 @@ const config = {
     new ExtractTextPlugin('[name].css'),
 
     new FlowBabelWebpackPlugin(),
-
-    // Eliminate duplicate packages when generating bundle
-    new webpack.optimize.DedupePlugin(),
 
     // Minify JS
     new webpack.optimize.UglifyJsPlugin()
