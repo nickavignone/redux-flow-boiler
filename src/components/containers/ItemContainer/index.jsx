@@ -21,7 +21,7 @@ class ItemContainer extends React.Component<Props> {
   }
 
   componentWillMount = () => {
-    if(!this.props.currentItem.id || this.props.currentItem.id != this.props.match.params.itemId) {
+    if(this.props.currentItem.id == null || this.props.currentItem.id != this.props.match.params.itemId) {
       this.props.actions.selectItem(this.props.match.params.itemId);
     } 
   }
