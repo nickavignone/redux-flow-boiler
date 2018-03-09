@@ -1,15 +1,15 @@
 # redux-flow-boiler
 
-###Versions
+### Versions
 React 16
 Redux 5
 Webpack 3
 React Router 4
 Redux 3
 
-###Key Features
+### Key Features
 React, Redux, Thunk, Flow Typing, HMR, Easy Component Importing, Caching, (S)CSS Modules, Dev and Prod builds
 
 
-###todo
+### todo
 add documentation
