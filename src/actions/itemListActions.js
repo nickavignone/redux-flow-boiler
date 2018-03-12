@@ -1,5 +1,4 @@
 // @flow
-/*eslint valid-jsdoc: "error"*/
 
 import { SELECT_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
 import { push } from 'react-router-redux';

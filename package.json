@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.config.dev",
-    "build": "babel-node tools/build.js"
+    "build": "babel-node tools/build.js",
+    "doc": "esdoc -c esdoc.json"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,13 @@
     "babel-preset-stage-2": "^6.24.1",
     "chalk": "^2.3.2",
     "css-loader": "^0.28.10",
+    "esdoc": "^1.0.4",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-flow-plugin": "^1.0.0",
+    "esdoc-flow-type-plugin": "^1.0.1",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-react-plugin": "^1.0.1",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.18.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
@@ -33,6 +41,7 @@
     "flow-babel-webpack-plugin": "^1.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
+    "jsdoc": "^3.5.5",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.1",
     "react-hot-loader": "^4.0.0",
