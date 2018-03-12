@@ -4,8 +4,12 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import { routerMiddleware } from 'react-router-redux';
 
-
-function configureStoreProd(browserHistory) {
+/**
+ * Sets prod version of the store object.
+ * @param {History} browserHistory The History object from history/createBrowserHistory.
+ * @returns {function} the store object.
+ */
+function configureStoreProd(browserHistory: History) {
   const middlewares = [
     thunk,
     routerMiddleware(browserHistory)
@@ -14,7 +18,12 @@ function configureStoreProd(browserHistory) {
   return createStore(rootReducer, applyMiddleware(...middlewares));
 }
 
-function configureStoreDev(browserHistory) {
+/**
+ * Sets dev version of the store object.
+ * @param {History} browserHistory The History object from history/createBrowserHistory.
+ * @returns {function} the store object.
+ */
+function configureStoreDev(browserHistory: History) {
   const middlewares = [
     // Add other middleware on this line...
     // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
@@ -44,3 +53,4 @@ function configureStoreDev(browserHistory) {
 const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
 
 export default configureStore;
+

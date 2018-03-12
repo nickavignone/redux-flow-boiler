@@ -1,4 +1,6 @@
 // @flow
+/*eslint valid-jsdoc: "error"*/
+
 import { SELECT_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
 import { push } from 'react-router-redux';
 import { demoData } from '../constants/demoData';
@@ -7,6 +9,13 @@ import { storage } from '../helpers/storage';
 const later = (delay, value) =>
     new Promise(resolve => setTimeout(resolve, delay, demoData[value]));
 
+
+/**
+ * Retrieves the passed items data and Routes user to the passed item page.
+ * @param {number} id The id of the item.
+ * @param {boolean} timeTravel Flag for if user is timeTraveling.
+ * @returns {function} dispatches react-router push and item data update.
+ */
 export const selectItem = (id:number, timeTravel:bool) => {
   return (dispatch:Function) => {
     const path = '/item/' + id;

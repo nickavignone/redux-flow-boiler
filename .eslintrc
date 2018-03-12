@@ -66,6 +66,8 @@
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
+    "valid-jsdoc": 2,
+    "require-jsdoc": 2
   },
   "globals": {
     "_": true,
