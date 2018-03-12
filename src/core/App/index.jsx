@@ -38,13 +38,21 @@ class App extends React.Component<Props, State> {
   }
 }
 
-
+/**
+ * Connect redux global state to this components props.
+ * @param {object} state contains the redux global state.
+ * @returns {object} the specified fields pulled from the global state.
+ */
 function mapStateToProps(state) {
   return {
     loader: state.globalReducer.loader
   };
 }
 
+/**
+ * Connect redux global dispatch to this components props.
+ * @returns {object} empty placeholder for returning actions.
+ */
 function mapDispatchToProps() {
   return {
     /*actions: bindActionCreators({toggleError}, dispatch)*/

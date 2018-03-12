@@ -43,12 +43,22 @@ class ItemListContainer extends React.Component<Props> {
   }
 }
 
+/**
+ * Connect redux global state to this components props.
+ * @param {object} state contains the redux global state.
+ * @returns {object} the specified fields pulled from the global state.
+ */
 function mapStateToProps(state) {
   return {
     items: state.listItemReducer.items,
   };
 }
 
+/**
+ * Connect redux global dispatch to this components props.
+ * @param {function} dispatch function for triggering redux actions.
+ * @returns {object} list of actions that can be dispatched from this component.
+ */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({selectItem}, dispatch)

@@ -25,7 +25,6 @@ module.exports = {
     host: 'localhost',
     port: 3000,
     historyApiFallback: true,
-    // respond to 404s with index.html
     hot: true,
     contentBase: "./dist",
     stats: {
@@ -88,7 +87,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // OccurenceOrderPlugin is needed for webpack 1.x only
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
       __DEV__: true
