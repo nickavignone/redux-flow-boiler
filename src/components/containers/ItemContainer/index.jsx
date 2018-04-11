@@ -10,7 +10,8 @@ import _ from 'lodash';
 type Props = {
   currentItem: {title?: string, desc?: string, id?: number},
   match: {params: { itemId:any }},
-  actions: { selectItem: Function }
+  actions: { selectItem: Function },
+  itemId: string
 };
 
 
@@ -22,20 +23,25 @@ class ItemContainer extends React.Component<Props> {
 
   componentWillMount = () => {
     if(this.props.currentItem.id == null || this.props.currentItem.id != this.props.match.params.itemId) {
-      this.props.actions.selectItem(this.props.match.params.itemId);
+      this.props.actions.selectItem(this.props.match.params.itemId, false, true);
     } 
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if(this.props.currentItem.id != nextProps.match.params.itemId) {
-      this.props.actions.selectItem(nextProps.match.params.itemId, true);
+    if(this.props.itemId != nextProps.itemId) {
+      this.props.actions.selectItem(nextProps.itemId, true);
     }
+  }
+
+  shouldComponentUpdate = (nextProps) => {
+    return this.props.itemId != nextProps.itemId;
   }
 
   render() {
     const {
       currentItem
     } = this.props;
+
     return (
       <div>
         {!_.isEmpty(currentItem) ? (

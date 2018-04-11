@@ -13,9 +13,10 @@ const later = (delay, value) =>
  * Retrieves the passed items data and Routes user to the passed item page.
  * @param {number} id The id of the item.
  * @param {boolean} timeTravel Flag for if user is timeTraveling.
+ * @param {boolean} keepURL Flag for if url should change.
  * @returns {function} dispatches react-router push and item data update.
  */
-export const selectItem = (id:number, timeTravel:bool) => {
+export const selectItem = (id:number, timeTravel:bool, keepURL: bool) => {
   return (dispatch:Function) => {
     const path = '/item/' + id;
     const data = storage.getItem(path);
@@ -24,7 +25,7 @@ export const selectItem = (id:number, timeTravel:bool) => {
         type: SELECT_ITEM,
         data: JSON.parse(data)
       });
-      if(!timeTravel) {
+      if(!timeTravel && !keepURL) {
         dispatch(push(path));
       }
     } else {
@@ -37,7 +38,9 @@ export const selectItem = (id:number, timeTravel:bool) => {
               data: response
             });
             storage.setItem(path, JSON.stringify(response));
-            dispatch(push(path));
+            if(!keepURL) {
+              dispatch(push(path));
+            }
             dispatch({type: END_LOADER});
           } else {
             throw 'no data';
