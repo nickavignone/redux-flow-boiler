@@ -1,7 +1,7 @@
 // @flow
 
 import { SELECT_ITEM, SET_LOADER, END_LOADER } from '../constants/actionTypes';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 import { demoData } from '../constants/demoData';
 import { storage } from '../helpers/storage';
 

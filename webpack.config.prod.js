@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const path = require('path');
 
@@ -39,6 +40,11 @@ const config = {
 
     // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].css'),
+
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
 
     new FlowBabelWebpackPlugin(),
 
