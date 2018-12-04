@@ -54,7 +54,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.config.dev",
-    "build": "babel-node tools/build.js"
+    "build": "babel-node tools/build.js",
+    "lint": "eslint **/*.jsx"
   },
   "author": "",
   "license": "ISC"
